@@ -8,7 +8,9 @@ import core from '@idio/core'
     },
     /** @param {import('koa').Context} ctx */
     async fn(ctx, next) {
-      console.log(inspect(ctx.request.body, { colors: true }))
+      const { payload } = ctx.request.body
+      const p = JSON.parse(payload)
+      console.log(inspect(p, { colors: true }))
       ctx.body = 'ok'
       await next()
     },
